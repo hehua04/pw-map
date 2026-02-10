@@ -4,8 +4,25 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  css: ["./assets/style/global.css"],
-  modules: ["@nuxt/ui", "@nuxtjs/leaflet"],
+  css: ["./assets/style/global.css", "leaflet/dist/leaflet.css"],
+  modules: ["@nuxt/ui", "@nuxtjs/leaflet", "@nuxtjs/i18n"],
+  i18n: {
+    strategy: "prefix",
+    defaultLocale: "en",
+    lazy: true,
+    langDir: "locales",
+    vueI18n: "./i18n.config.ts",
+    locales: [
+      { code: "en", name: "English", file: "en.json" },
+      { code: "zh", name: "中文", file: "zh.json" },
+    ],
+    detectBrowserLanguage: {
+      alwaysRedirect: true,
+      useCookie: true,
+      fallbackLocale: "en",
+      redirectOn: "root",
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

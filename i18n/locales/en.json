@@ -1,0 +1,69 @@
+{
+  "app": {
+    "tagline": "Postal Wiki",
+    "title": "Postal Wiki Map",
+    "subtitle": "Browse posts and open the form only when you need to add one."
+  },
+  "actions": {
+    "newPost": "New Post",
+    "backToMap": "Back to map",
+    "clear": "Clear",
+    "submit": "Submit",
+    "submitting": "Submitting..."
+  },
+  "ui": {
+    "language": "Language"
+  },
+  "states": {
+    "loadingPosts": "Loading posts...",
+    "loadFailed": "Failed to load posts.",
+    "checkEmail": "Check your email for a verification link to publish the post.",
+    "submitFailed": "Submission failed. Check the form fields."
+  },
+  "details": {
+    "title": "Details",
+    "emptyTitle": "Select a marker to inspect",
+    "subtitle": "Snapshot of the selected post",
+    "emptySubtitle": "Click any marker to see the full entry.",
+    "address": "Address",
+    "description": "Description",
+    "metadata": "Metadata",
+    "id": "ID",
+    "zip": "Zip",
+    "pickupTime": "Pickup time",
+    "station": "Station",
+    "stamp": "Stamp",
+    "status": "Status",
+    "format": "Format",
+    "emptyTitleShort": "No post selected",
+    "emptyHint": "Click a marker on the map to inspect details for that post."
+  },
+  "form": {
+    "mapHint": "Click the map or type coordinates below.",
+    "name": "Name",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "address": "Address",
+    "description": "Description",
+    "zip": "Zip Code",
+    "email": "Email",
+    "pickupTime": "Pickup Time (optional)",
+    "station": "Station (optional)",
+    "stamp": "Stamp (optional)",
+    "status": "Status (required)",
+    "format": "Format (required)"
+  },
+  "status": {
+    "normal": "Normal",
+    "seasonal": "Seasonal",
+    "internal": "Internal",
+    "discarded": "Discarded",
+    "unknown": "Unknown / to be confirmed"
+  },
+  "format": {
+    "wallMountedCube": "Wall-mounted cube",
+    "freestandingCylinder": "Freestanding cylinder",
+    "freestandingRectangularPrism": "Freestanding rectangular prism",
+    "noPhoto": "No photo"
+  }
+}

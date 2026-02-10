@@ -1,5 +1,3 @@
 <template>
-  <VApp>
-    <NuxtPage />
-  </VApp>
+  <NuxtPage />
 </template>
