@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "nuxt start"
   },
   "dependencies": {
     "@nuxt/ui": "^4.4.0",
@@ -31,5 +32,9 @@
     "prettier-plugin-prisma": "^5.0.0",
     "prisma": "^7.3.0",
     "tsx": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=22",
+    "bun": ">=1.3"
   }
 }
