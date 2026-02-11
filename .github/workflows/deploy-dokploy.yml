@@ -23,7 +23,7 @@ jobs:
         uses: chrnorm/deployment-action@v2
         id: deployment
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           environment: production
 
       - name: Trigger Dokploy Webhook
@@ -46,7 +46,7 @@ jobs:
         if: success()
         uses: chrnorm/deployment-status@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: success
           environment-url: https://your-app.example.com
@@ -55,6 +55,6 @@ jobs:
         if: failure()
         uses: chrnorm/deployment-status@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: failure
