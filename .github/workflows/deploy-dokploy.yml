@@ -32,12 +32,14 @@ jobs:
           PAYLOAD=$(
             cat <<'JSON'
           {
-            "event": "deploy",
-            "repository": "${{ github.repository }}",
-            "ref": "${{ github.event.workflow_run.head_branch }}",
-            "sha": "${{ github.event.workflow_run.head_sha }}",
-            "run_id": "${{ github.event.workflow_run.id }}",
-            "run_url": "${{ github.event.workflow_run.html_url }}"
+            "ref": "refs/heads/${{ github.event.workflow_run.head_branch }}",
+            "after": "${{ github.event.workflow_run.head_sha }}",
+            "repository": {
+              "full_name": "${{ github.repository }}"
+            },
+            "sender": {
+              "login": "${{ github.actor }}"
+            }
           }
           JSON
           )
