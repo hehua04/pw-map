@@ -31,7 +31,7 @@
     "id": "ID",
     "zip": "邮编",
     "pickupTime": "开取时间",
-    "station": "开取部门",
+    "station": "责任部门",
     "PostmarkText": "邮戳文字",
     "status": "状态",
     "format": "样式",
@@ -48,7 +48,7 @@
     "zip": "邮编",
     "email": "邮箱",
     "pickupTime": "开取时间（可选）",
-    "station": "开取部门（可选）",
+    "station": "责任部门（可选）",
     "PostmarkText": "邮戳文字（可选）",
     "status": "状态（必选）",
     "format": "样式（必选）"
