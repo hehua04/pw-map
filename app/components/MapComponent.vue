@@ -1,9 +1,10 @@
 <template>
   <div class="map-container">
     <LMap
-      ref="map"
+      ref="mapRef"
       :zoom="zoom"
       :center="center"
+      :bounds="bounds"
       :use-global-leaflet="false"
       @click="handleMapClick"
       class="h-full w-full"
@@ -52,7 +53,25 @@ const emit = defineEmits<{
 }>();
 
 const zoom = ref(13);
-const center = ref([51.505, -0.09]); // Default center (London)
+const mapRef = ref();
+
+// Default center (London)
+const center = ref<[number, number]>([51.505, -0.09]);
+
+// Calculate bounds to fit all markers
+// When there's a selection, don't use bounds so center takes over
+const bounds = computed(() => {
+  if (selectionMarker.value) return null;
+  if (convertedMarkers.value.length === 0) return null;
+
+  const lats = convertedMarkers.value.map((m) => m.lat);
+  const lons = convertedMarkers.value.map((m) => m.lon);
+
+  return [
+    [Math.min(...lats), Math.min(...lons)],
+    [Math.max(...lats), Math.max(...lons)],
+  ] as [[number, number], [number, number]];
+});
 
 // Convert coordinates if in China
 const convertedMarkers = computed(() => {
@@ -74,6 +93,13 @@ const selectionMarker = computed(() => {
   return props.selected;
 });
 
+// Update center when selection changes
+watch(selectionMarker, (newSelection) => {
+  if (newSelection) {
+    center.value = [newSelection.lat, newSelection.lon];
+  }
+});
+
 const handleMapClick = (event: LeafletMouseEvent) => {
   if (!props.enableSelection) return;
   emit("select", { lat: event.latlng.lat, lon: event.latlng.lng });
@@ -82,18 +108,6 @@ const handleMapClick = (event: LeafletMouseEvent) => {
 const handleMarkerClick = (marker: Marker) => {
   emit("markerSelect", marker);
 };
-
-// Update center when markers are provided
-watchEffect(() => {
-  if (selectionMarker.value) {
-    center.value = [selectionMarker.value.lat, selectionMarker.value.lon];
-    return;
-  }
-
-  if (convertedMarkers.value.length === 0) return;
-  const firstMarker = convertedMarkers.value[0];
-  center.value = [firstMarker.lat, firstMarker.lon];
-});
 </script>
 
 <style scoped>
