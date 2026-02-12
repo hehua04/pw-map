@@ -24,6 +24,9 @@ jobs:
       - name: Format check
         run: bunx prettier --check .
 
+      - name: Format wirte
+        run: bunx prettier --write .
+
       - name: Typecheck
         run: bun run typecheck
 
